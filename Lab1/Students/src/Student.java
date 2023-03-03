@@ -3,14 +3,12 @@ public class Student {
     private int age;
     private int id;
     private double gpa;
-    private Student_Type type;
 
-    public Student(String name, int age, int id, double gpa, Student_Type type) {
+    public Student(String name, int age, int id, double gpa) {
         this.name = name;
         this.age = age;
         this.id = id;
         this.gpa = gpa;
-        this.type = type;
     }
 
     public String getName() {
@@ -31,10 +29,6 @@ public class Student {
 
     public void setGpa(double gpa) {
         this.gpa = gpa;
-    }
-
-    public Student_Type getType() {
-        return type;
     }
 
     public void display() {

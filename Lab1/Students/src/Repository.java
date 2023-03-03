@@ -1,133 +1,35 @@
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.ArrayList;
 
 public class Repository {
-    private List<Student> students = new List<Student>() {
-        @Override
-        public int size() {
-            return 0;
-        }
+    private ArrayList<Student> _students = new ArrayList<>();
 
-        @Override
-        public boolean isEmpty() {
-            return false;
-        }
-
-        @Override
-        public boolean contains(Object o) {
-            return false;
-        }
-
-        @Override
-        public Iterator<Student> iterator() {
-            return null;
-        }
-
-        @Override
-        public Object[] toArray() {
-            return new Object[0];
-        }
-
-        @Override
-        public <T> T[] toArray(T[] a) {
-            return null;
-        }
-
-        @Override
-        public boolean add(Student student) {
-            return false;
-        }
-
-        @Override
-        public boolean remove(Object o) {
-            return false;
-        }
-
-        @Override
-        public boolean containsAll(Collection<?> c) {
-            return false;
-        }
-
-        @Override
-        public boolean addAll(Collection<? extends Student> c) {
-            return false;
-        }
-
-        @Override
-        public boolean addAll(int index, Collection<? extends Student> c) {
-            return false;
-        }
-
-        @Override
-        public boolean removeAll(Collection<?> c) {
-            return false;
-        }
-
-        @Override
-        public boolean retainAll(Collection<?> c) {
-            return false;
-        }
-
-        @Override
-        public void clear() {
-
-        }
-
-        @Override
-        public Student get(int index) {
-            return null;
-        }
-
-        @Override
-        public Student set(int index, Student element) {
-            return null;
-        }
-
-        @Override
-        public void add(int index, Student element) {
-
-        }
-
-        @Override
-        public Student remove(int index) {
-            return null;
-        }
-
-        @Override
-        public int indexOf(Object o) {
-            return 0;
-        }
-
-        @Override
-        public int lastIndexOf(Object o) {
-            return 0;
-        }
-
-        @Override
-        public ListIterator<Student> listIterator() {
-            return null;
-        }
-
-        @Override
-        public ListIterator<Student> listIterator(int index) {
-            return null;
-        }
-
-        @Override
-        public List<Student> subList(int fromIndex, int toIndex) {
-            return null;
-        }
-    };
-
-    public void addStudent() {
-
+    public void addStudent(Student student) {
+        if (student.getClass().getName() == "Student")
+            _students.add(new Student(student.getName(), student.getAge(), student.getId(), student.getGpa()));
+        if (student.getClass().getName() == "BudgetStudent")
+            _students.add(new BudgetStudent(student.getName(), student.getAge(), student.getId(), student.getGpa()));
+        else
+            _students.add(student);
     }
 
-    public void removeAt(int index) {
-
+    public void removeStudent(int index) {
+        if(_students.size() >= index)
+            _students.remove(index);
     }
 
+    public void updateStudent(int index, Student student) {
+        if(_students.size() >= index) {
+            if (student.getClass().getName() == "Student")
+                _students.set(index, new Student(student.getName(), student.getAge(), student.getId(), student.getGpa()));
+            else if (student.getClass().getName() == "BudgetStudent")
+                _students.set(index, new BudgetStudent(student.getName(), student.getAge(), student.getId(), student.getGpa()));
+            else
+                _students.set(index, student);
+        }
+    }
+
+    public ArrayList<Student> getArray(){
+        return _students;
+    }
 
 }

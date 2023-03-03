@@ -1,8 +1,8 @@
-public class Budget_Student extends Student {
+public class BudgetStudent extends Student {
     private double scholarship;
 
-    public Budget_Student(String name, int age, int id, double gpa, Student_Type type) {
-        super(name, age, id, gpa, type);
+    public BudgetStudent(String name, int age, int id, double gpa) {
+        super(name, age, id, gpa);
         scholarship = calculateScholarship();
     }
 
